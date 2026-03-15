@@ -1,0 +1,20 @@
+name: Production Merge Check
+run-name: Deploying changes merged by ${{ github.actor }} 🚀
+
+on:
+  push:
+    branches:
+      - main # This ensures it ONLY runs when main is updated
+
+jobs:
+  Build-and-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Verify Merge
+        run: |
+          echo "Merge detected on main branch."
+          echo "Running production-level checks..."
+          date
